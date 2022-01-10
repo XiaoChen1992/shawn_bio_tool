@@ -29,6 +29,7 @@ def pdb2fasta(pdb_file):
         sequence
     """
     if not os.path.isfile(pdb_file):
+        print(1)
         print(f'Please check {pdb_file}')
         sys.exit(1)
 
