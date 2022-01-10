@@ -33,17 +33,19 @@ def pdb2fasta(pdb_file):
         # print(f'Please check {pdb_file}')
         sys.exit(1)
 
-    with open(pdb_file, 'r') as f:
-        content = f.readlines()
-    f.close()
+    with open(pdb_file, 'r') as file:
+        content = file.readlines()
+
     seq = []
     prev_mark = -1
+
     for line in content:
         if line[:4] == 'ATOM':
             pos_mark = line[22: 26].strip()
             if pos_mark != prev_mark:
                 seq.append(amino[line[17:20]])
             prev_mark = pos_mark
+
     return "".join(seq)
 
 
@@ -53,6 +55,7 @@ if __name__ == '__main__':
         sys.exit(1)
     
     sequence = pdb2fasta(os.path.abspath(sys.argv[1]))
+
     print(sequence)
     
     target_id = sys.argv[2]
@@ -62,4 +65,3 @@ if __name__ == '__main__':
         f.writelines(f'>{target_id} | {len(sequence)}')
         f.writelines('\n')
         f.writelines(sequence)
-    f.close()
