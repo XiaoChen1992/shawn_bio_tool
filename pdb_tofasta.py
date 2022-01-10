@@ -51,10 +51,13 @@ if __name__ == '__main__':
     if len(sys.argv) != 4:
         print('Required input pdb file, target name and output folder')
         sys.exit(1)
+    
     sequence = pdb2fasta(os.path.abspath(sys.argv[1]))
     print(sequence)
+    
     target_id = sys.argv[2]
     output_folder = os.path.abspath(sys.argv[3])
+    
     with open(f'{output_folder}/{target_id}.fasta', 'w') as f:
         f.writelines(f'>{target_id} | {len(sequence)}')
         f.writelines('\n')
