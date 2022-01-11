@@ -7,7 +7,7 @@
 import pandas as pd
 
 
-def helper(spider_file: str) -> pd.DataFrame:
+def read_spider_to_ss38(spider_file: str) -> pd.DataFrame:
     tmp_file = open(spider_file)
     ss3 = []
     ss8 = []
