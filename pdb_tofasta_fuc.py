@@ -10,14 +10,6 @@ Only consiser ATOM.
 import os
 import sys
 
-amino = {'ALA': 'A', 'ARG': 'R', 'ASN': 'N',
-         'ASP': 'D', 'CYS': 'C', 'GLU': 'E',
-         'GLN': 'Q', 'GLY': 'G', 'HIS': 'H',
-         'ILE': 'I', 'LEU': 'L', 'LYS': 'K',
-         'MET': 'M', 'PHE': 'F', 'PRO': 'P',
-         'SER': 'S', 'THR': 'T', 'TRP': 'W',
-         'TYR': 'Y', 'VAL': 'V'}
-
 
 def pdb2fasta(pdb_file):
     """
@@ -26,6 +18,16 @@ def pdb2fasta(pdb_file):
     Returns:
         sequence
     """
+
+    
+    amino = {'ALA': 'A', 'ARG': 'R', 'ASN': 'N',
+        'ASP': 'D', 'CYS': 'C', 'GLU': 'E',
+        'GLN': 'Q', 'GLY': 'G', 'HIS': 'H',
+        'ILE': 'I', 'LEU': 'L', 'LYS': 'K',
+        'MET': 'M', 'PHE': 'F', 'PRO': 'P',
+        'SER': 'S', 'THR': 'T', 'TRP': 'W',
+        'TYR': 'Y', 'VAL': 'V'}
+
     if not os.path.isfile(pdb_file):
         print(f'Please check {pdb_file}')
         sys.exit(1)
