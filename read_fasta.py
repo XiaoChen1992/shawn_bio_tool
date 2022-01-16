@@ -12,4 +12,8 @@ def read_fasta(fasta_file: str) -> str:
     for i in content:
         if not(i.startswith('>')):
             seq += i.strip()
-    return seq
+        else:
+            target_id, length = i.split('|')
+            target_id = target_id.strip().strip('>')
+            length = length.strip()
+    return target_id, length, seq
