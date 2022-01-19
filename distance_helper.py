@@ -32,7 +32,7 @@ def distance_helper(pdb_file: str, pdb_name: str, output_folder: str, atom_type=
         filtered_df = test_df[((test_df.loc[:, 'residue_name'] == 'GLY') & (test_df.loc[:, 'atom_name'] == 'CA')) \
                               | (test_df.loc[:, 'atom_name'] == 'CB')]
     elif atom_type == 'CA':
-        filtered_df = test_df[test_df.loc[:, 'atom_name'] == 'CB']
+        filtered_df = test_df[test_df.loc[:, 'atom_name'] == 'CA']
     elif atom_type == 'NO':
         filtered_df = test_df[(test_df.loc[:, 'atom_name'] == 'N') | (test_df.loc[:, 'atom_name'] == 'O')]
     else:
