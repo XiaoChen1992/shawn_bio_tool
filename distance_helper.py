@@ -29,6 +29,7 @@ def distance_helper(pdb_file: str, pdb_name: str, output_folder: str, atom_type=
     test_df = ppdb.df['ATOM']
 
     if atom_type == 'CB':
+        # GLY does not have CB, use CA to instead of.
         filtered_df = test_df[((test_df.loc[:, 'residue_name'] == 'GLY') & (test_df.loc[:, 'atom_name'] == 'CA')) \
                               | (test_df.loc[:, 'atom_name'] == 'CB')]
     elif atom_type == 'CA':
@@ -36,8 +37,7 @@ def distance_helper(pdb_file: str, pdb_name: str, output_folder: str, atom_type=
     elif atom_type == 'NO':
         filtered_df = test_df[(test_df.loc[:, 'atom_name'] == 'N') | (test_df.loc[:, 'atom_name'] == 'O')]
     else:
-        print('Atom type should be CA or CB.')
-        return None
+        raise ValueError('Atom type should be CA, CB or NO.')
 
     if atom_type != 'NO':
         coord = filtered_df.loc[:, ['x_coord', 'y_coord', 'z_coord']].values.tolist()
