@@ -33,14 +33,22 @@ def distance_helper(pdb_file: str, pdb_name: str, output_folder: str, atom_type=
                               | (test_df.loc[:, 'atom_name'] == 'CB')]
     elif atom_type == 'CA':
         filtered_df = test_df[test_df.loc[:, 'atom_name'] == 'CB']
+    elif atom_type == 'NO':
+        filtered_df = test_df[(test_df.loc[:, 'atom_name'] == 'N') | (test_df.loc[:, 'atom_name'] == 'O')]
     else:
         print('Atom type should be CA or CB.')
         return None
 
-    coord = filtered_df.loc[:, ['x_coord', 'y_coord', 'z_coord']].values.tolist()
-
-    real_dist = euclidean_distances(coord)
+    if atom_type != 'NO':
+        coord = filtered_df.loc[:, ['x_coord', 'y_coord', 'z_coord']].values.tolist()
+        real_dist = euclidean_distances(coord)
+    else:
+        coord_N = filtered_df[filtered_df.loc[:, 'atom_name'] == 'N'].loc[:, ['x_coord', 'y_coord', 'z_coord']].values.tolist()
+        coord_O = filtered_df[filtered_df.loc[:, 'atom_name'] == 'O'].loc[:, ['x_coord', 'y_coord', 'z_coord']].values.tolist()
+        real_dist = euclidean_distances(coord_N, coord_O)
+    
     real_dist = np.round(real_dist, 3)
+
 
     np.save(file=os.path.join(output_folder, pdb_name + f'_{atom_type}.npy'),
             arr=real_dist)
