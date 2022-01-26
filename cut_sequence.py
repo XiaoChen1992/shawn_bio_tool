@@ -13,8 +13,7 @@ def cut_sequence(input_sequence: str, maximum_length: int) -> None:
     seq = read_fasta(input_sequence)
 
     if len(seq) <= maximum_length:
-        print('This sequence is shorter than maximum length')
-        sys.exit(1)
+        raise ValueError('This sequence is shorter than maximum length')
 
     output_folder, target_id = os.path.split(input_sequence)
     target_id = target_id.split('.')[0]
