@@ -5,9 +5,11 @@
 """
 
 from typing import List
-from remove_n import remove_n
 
 def txt_to_list(txt_file: str, pattern='\n') -> List:
+    def remove_n(lst: List, pattern='\n') -> List:
+        return [i.strip(pattern) for i in lst]
+
     with open(txt_file, 'r') as f:
         tmp_list = f.readlines()
     tmp_list = remove_n(tmp_list, pattern=pattern)
