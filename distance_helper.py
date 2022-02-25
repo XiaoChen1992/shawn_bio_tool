@@ -46,7 +46,6 @@ def distance_helper(pdb_file: str, pdb_name: str, output_folder: str, atom_type=
         coord_N = filtered_df[filtered_df.loc[:, 'atom_name'] == 'N'].loc[:, ['x_coord', 'y_coord', 'z_coord']].values.tolist()
         coord_O = filtered_df[filtered_df.loc[:, 'atom_name'] == 'O'].loc[:, ['x_coord', 'y_coord', 'z_coord']].values.tolist()
         real_dist = euclidean_distances(coord_N, coord_O)  # up-triangle N-O, low-triangle O-N
-        np.fill_diagonal(real_dist, 0)  # set diagnoal value to 0
     
     # # get full N-O distance map and O-N distance map
     # e_1 = np.identity(real_dist.shape[0])[:,::1]
