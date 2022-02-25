@@ -15,7 +15,7 @@ def calculate_dockq(fnat: float, lrms: float, irms: float) -> float:
 
 
 def classification(dockq_score: float) -> int:
-	"""0: incorrect, 1: acceptable, 2: medium, 3: high"""
+    """0: incorrect, 1: acceptable, 2: medium, 3: high"""
     if 0 <= dockq_score < 0.23:
         return 0
     elif 0.23 <= dockq_score < 0.49:
