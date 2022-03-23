@@ -14,15 +14,15 @@ def calculate_dockq(fnat: float, lrms: float, irms: float) -> float:
 	return (fnat, scaled_lrms + scaled_irms) / 3
 
 
-def classification(dockq_score: float) -> int:
+def classification(dockq_score: float) -> float:
     """0: incorrect, 1: acceptable, 2: medium, 3: high"""
     if 0 <= dockq_score < 0.23:
-        return 0
+        return 0.0
     elif 0.23 <= dockq_score < 0.49:
-        return 1
+        return 1.0
     elif 0.49 <= dockq_score < 0.8:
-        return 2
+        return 2.0
     elif dockq_score >= 0.8:
-        return 3
+        return 3.0
     else:
         raise ValueError(f'The dockq score shout between 0 and 1. The current value is {dockq_score}')
