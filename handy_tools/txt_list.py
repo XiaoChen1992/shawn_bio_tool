@@ -6,7 +6,7 @@
 
 from typing import List
 
-def txt_to_list(txt_file: str, pattern='\n') -> List:
+def txt_to_list(txt_file: str, pattern: str = '\n') -> List:
     def remove_n(lst: List, pattern='\n') -> List:
         return [i.strip(pattern) for i in lst]
 
