@@ -4,10 +4,10 @@
 @ Date: 2022-01-12
 """
 
-from typing import List
+from typing import List, Any
 
-def txt_to_list(txt_file: str, pattern: str = '\n') -> List:
-    def remove_n(lst: List, pattern='\n') -> List:
+def txt_to_list(txt_file: str, pattern: str = '\n') -> List[Any]:
+    def remove_n(lst: List[Any], pattern: str = '\n') -> List[Any]:
         return [i.strip(pattern) for i in lst]
 
     with open(txt_file, 'r') as f:
