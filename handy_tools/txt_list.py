@@ -4,6 +4,7 @@
 @ Date: 2022-01-12
 """
 
+from turtle import st
 from typing import List, Any
 
 def txt_to_list(txt_file: str, pattern: str = '\n') -> List[Any]:
@@ -16,7 +17,7 @@ def txt_to_list(txt_file: str, pattern: str = '\n') -> List[Any]:
     return tmp_list
 
 
-def list_to_txt(lst: List, txt_file: str) -> None:
+def list_to_txt(lst: List[str], txt_file: str) -> None:
     with open(txt_file, 'w') as f:
         for i in lst:
             f.writelines(i + '\n')
