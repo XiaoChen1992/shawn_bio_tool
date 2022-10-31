@@ -30,7 +30,7 @@ def pdb2fasta(pdb_file):
          'TYR': 'Y', 'VAL': 'V'}
          
     if not os.path.isfile(pdb_file):
-        raise FileNotFoundError(f'Please chcek {pdb_file}')
+        raise FileNotFoundError(f'Please check {pdb_file}')
 
     with open(pdb_file, 'r') as file:
         content = file.readlines()
